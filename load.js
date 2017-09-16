@@ -66,6 +66,11 @@
         __interval: null
     },
 
+
+    // Sounds
+    sounds: {},
+
+
     // The UI Popup
     uiPopup: {
         __element: null,
@@ -84,10 +89,3 @@
         }
     }
 };
-
-(function (){
-    // Set it in half a second to allow things to pre-initialize
-    window.setTimeout(function(){
-        window.gameManager.preLoader.initialize();
-    },500);
-})();

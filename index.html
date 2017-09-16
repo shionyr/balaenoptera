@@ -65,8 +65,17 @@
             /* END Loading screen */
         </style>
         <script id="script_load" type="text/javascript" src="./load.js"> </script>
-        <script id="script_jquery" type="text/javascript" src="./lib/jquery-3.2.1.min.js"> </script>
         <script id="script_howler" type="text/javascript" src="./lib/howler.js-master/dist/howler.min.js"> </script>
+        <script type="text/javascript">
+            // Preload sounds
+            gameManager.sounds.ambient = new Howl({
+                src: './audio/ambient_space.mp3',
+                autoplay: false,
+                loop: true,
+                volume: 0
+            });
+        </script>
+        <script id="script_jquery" type="text/javascript" src="./lib/jquery-3.2.1.min.js"> </script>
         <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="style.css" />
         <script type="text/javascript">
@@ -75,6 +84,14 @@
                 console.log ('poop');
                 gameManager.preLoader.removeSemaphore('script_load');
             });
+
+            // Trigger preloader
+            (function (){
+                // Set it in half a second to allow things to pre-initialize
+                window.setTimeout(function(){
+                    window.gameManager.preLoader.initialize();
+                },500);
+            })();
         </script>
 	</head>
 	<body>
@@ -142,6 +159,12 @@
                     console.log('foobar:',e);
                     e.target.className += " displayNone";
                 }, false);
+            });
+
+            // Fade in sound
+            gameManager.setEvent(gameManager.eventNames.loadingScreenComplete, function() {
+                gameManager.sounds.ambient.play();
+                gameManager.sounds.ambient.fade(0,1,1000);
             });
         </script>
 	</body>
