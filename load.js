@@ -1,36 +1,93 @@
 ﻿window.gameManager = {
+    // Add an event trigger of @eventName
     setEvent: function (eventName, func) {
+        // eventName can be something from this.eventNames, or a custom event
+        if (!this.__events.hasOwnProperty(eventName)) {
+            this.__events[eventName] = [];
+        }
+        this.__events[eventName].push(func);
     },
+    // Fire an event trigger for @eventName
+    fireEvent: function (eventName) {
+        if (typeof(this.__events[eventName]) === 'object') {
+            var len = this.__events[eventName].length;
+            for (var i = 0; i < len; i++) {
+                if (typeof(this.__events[eventName][i]) === 'function') {
+                    this.__events[eventName][i]();
+                }
+            }
+        }
+    },
+    // An "enum" of names of events.  Can have stuff added to it
     eventNames: {   // sort of an enum
-        loadingScreenComplete: 1,
-        gameLoaded: 3,
-        
-        gameEvent: 10
+        loadingScreenComplete: 'loadingScreenComplete',
+        gameLoaded: 'gameLoaded',
+        gamePause: 'gamePause',
+        gameOver: 'gameOver'
     },
+    // private var for tracking events
     __events: {
-        //
-        loadingScreenComplete: (function () { return new Event('loadingScreenComplete'); })()
+        loadingScreenComplete: [
+            // Example
+        ]
     },
-    loader: {
+
+
+    // Manages preLoading functionality
+    preLoader: {
+        __loadSemaphore: {},
+        __checkSemaphore: function () {
+            for (var i in gameManager.preLoader.__loadSemaphore) {
+                if (gameManager.preLoader.__loadSemaphore[i] !== null)
+                    return false;
+            }
+            return true;
+        },
         __iterate: function () {
             if (document.readyState === 'complete') {
-                // If it's done, clear the interval and trigger the loading screen complete event
-                clearInterval(this.__interval);
-                document.dispatchEvent(window.gameData.events.loadingScreenComplete);
+                //if (!gameManager.preLoader.__checkSemaphore()) return;
+                window.clearInterval(window.gameManager.preLoader.__interval);
+                window.gameManager.fireEvent(window.gameManager.eventNames.loadingScreenComplete);
             }
         },
         initialize: function () {
-            this.__interval = window.setInterval( function(){
-                window.gameData.loader.__iterate.call(window.gameData.loader);
+            window.gameManager.preLoader.__interval = window.setInterval( function(){
+                window.gameManager.preLoader.__iterate();
             },100);
         },
+        addSemaphore: function(name, obj) {
+            gameManager.preLoader.__loadSemaphore [name] = obj;
+        },
+        removeSemaphore: function(name) {
+            if (gameManager.preLoader.__loadSemaphore.hasOwnProperty(name)) {
+                gameManager.preLoader.__loadSemaphore[name] = null;
+            }
+        },
         __interval: null
+    },
+
+    // The UI Popup
+    uiPopup: {
+        __element: null,
+        __checkInit: function() {
+            if (window.gameManager.uiPopup.__element === null) {
+                window.gameManager.uiPopup.__element = $('.gameObject.popupUI');
+            }
+        },
+        show: function() {
+            window.gameManager.uiPopup.__checkInit();
+            window.gameManager.uiPopup.__element.removeClass('hidden');
+        },
+        hide: function() {
+            window.gameManager.uiPopup.__checkInit();
+            window.gameManager.uiPopup.__element.addClass('hidden');
+        }
     }
 };
 
 (function (){
     // Set it in half a second to allow things to pre-initialize
     window.setTimeout(function(){
-        window.gameManager.loader.initialize();
+        window.gameManager.preLoader.initialize();
     },500);
 })();

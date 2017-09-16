@@ -1,4 +1,17 @@
-﻿body {
+﻿@font-face {
+    font-family: 'Subway Ticker';
+    src: url('./fonts/SubwayTicker.eot');
+    src: url('./fonts/SubwayTicker.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/SubwayTicker.woff') format('woff'),
+    url('./fonts/SubwayTicker.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: pixelated;
+    font-family: 'Subway Ticker';
 }
 
 .messageWindow {
@@ -18,4 +31,152 @@
     100% { opacity: 1.0; }
 }
 
+.displayNone {
+    display: none;
+}
+
 /* END animations */
+
+
+/* BEGIN generic */
+.clickable {
+    cursor: pointer;
+}
+/* END generic */
+
+
+/* BEGIN bottom UI */
+
+.gameScreen .bottomUI {
+    width: 100%;
+    outline: 1px dotted blue;
+    height: 21rem;
+    bottom: 1rem;
+}
+
+/* END bottom UI */
+
+
+
+/* BEGIN play area */
+
+.gameScreen .playArea {
+    outline: 1px dotted red;
+    width: 100%;
+    height: 66rem;
+    top: 12rem;
+}
+
+/* END play area */
+
+
+/* BEGIn popup ui */
+.gameScreen .popupUI {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+}
+
+.gameScreen .popupUI.hidden {
+    display: none;
+}
+
+.gameScreen .popupUI .popupWindow {
+    width: 100%;
+    height: 28rem;
+    bottom: 0;
+}
+
+.gameScreen .popupUI .portrait {
+    width: 38rem;
+    height: 72rem;
+    bottom:0;
+    left:2em;
+}
+
+.gameScreen .popupUI .portrait .picture {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+}
+
+.gameScreen .popupUI .portrait .eminata {
+    width: 3em;
+    height: 3em;
+    background-size: 100% 100%;
+    left: .25em;
+    top: .25em;
+}
+
+.gameScreen .popupUI .conversationWindow {
+    background: rgba(0, 0, 86, 0.5);;
+    width: 124rem;
+    height: 30rem;
+    top: -2rem;
+    left: 24rem;
+    border-radius: 2rem;
+}
+
+.gameScreen .popupUI .conversationWindow .statement {
+    top: -3rem;
+    left: 8rem;
+    width: 90rem;
+    height: 11rem;
+    display: block;
+    background: rgb(1, 93, 93);;
+    padding: 2rem;
+    border-radius: 1rem;
+    border-top-left-radius: 0;
+    box-shadow: .4rem .6rem .6rem rgba(0,0,0,0.3);
+    font-size: 2.5rem;
+    line-height: 1.4em;
+    color: #FFFFFF;
+    text-shadow: 0 0 .2em rgba(255,255,255,1);
+}
+
+.gameScreen .popupUI .conversationWindow .responses {
+    bottom: 1rem;
+    left: 14rem;
+    width: 103rem;
+    height: 12rem;
+    background: #002a69;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: .4rem .6rem .6rem rgba(0,0,0,0.3);
+    font-size: 2.5rem;
+    line-height: 1.4em;
+    color: #FFFFFF;
+    text-shadow: 0 0 .2em rgba(255,255,255,1);
+}
+
+.gameScreen .popupUI .conversationWindow .responses .responseChoice {
+    width: 47rem;
+    height: 4rem;
+    border: 1px solid #FFFFFF;
+    border-radius: 1rem;
+    padding: 0.6rem 0 0 1rem;
+    font-size: .9em;
+}
+.gameScreen .popupUI .conversationWindow .responses .responseChoice.bottom {
+    top:9rem;
+    margin-left: 1rem;
+}
+.gameScreen .popupUI .conversationWindow .responses .responseChoice.right {
+    left: 54rem;
+}
+
+/* END popup UI */
+
+
+/* BEGIN eminata */
+.gameScreen .popupUI .portrait.neutral .eminata {
+    background-image: url('./img/eminata/heart.png');
+}
+/* END eminata */
+
+
+/* BEGIN portraits */
+.gameScreen .popupUI .portrait.hugh.neutral .picture {
+    background-image: url('./img/portrait/hugh/neutral-2.png');
+}
+/* END portraits */
