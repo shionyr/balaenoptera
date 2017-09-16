@@ -1,0 +1,7 @@
+﻿body {
+}
+
+.messageWindow {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
