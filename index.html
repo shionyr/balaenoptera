@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="font-size:1vh;">
 	<head>
 		<title>Hello world!</title>
         <script type="text/javascript" src="./load.js"></script>
@@ -10,6 +10,7 @@
                 background: #000000;
                 display: block;
                 position: fixed;
+                font-size: 5%;
             }
             .gameScreen {
                 background: #222222;
@@ -26,6 +27,8 @@
             .awaitLoad {
                 opacity: 0;
             }
+
+            /* BEGIN Loading screen */
             @keyframes rotate {
                 0% { transform:rotate(0deg); }
                 25% { transform:rotate(90deg); }
@@ -36,12 +39,12 @@
             .loadingScreen {
                 width: 100%;
                 height: 100%;
+                background: #269abc;
             }
             .loadingScreen .spinner {
                 animation-name: rotate;
-                animation-duration: 10s;
+                animation-duration: 3s;
                 animation-play-state:running;
-                font-size: 50px;
                 color: #fff;
                 animation-iteration-count: infinite;
                 animation-timing-function: linear;
@@ -49,26 +52,33 @@
                 top: 50%;
                 margin-left: -2em;
                 margin-top: -.5em;
-                font-size: 4em;
+                font-size: 4rem;
             }
+            .loadingScreen.done {
+                animation-name: fadeout;
+                animation-duration: 2s;
+                animation-timing-function: linear;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+            }
+            /* END Loading screen */
         </style>
         <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
         <div class="gameScreen">
-
         </div>
         <div class="gameObject loadingScreen">
             <div class="gameObject spinner">
                 Loading...
             </div>
         </div>
-        <div class="gameObject awaitLoad">
-
-        </div>
+        <script type="text/javascript">
+            document.addEventListener('loadingScreenComplete',function() {
+                var element = document.getElementsByClassName('loadingScreen')[0];
+                element.className += " done";
+            });
+        </script>
 	</body>
-    <script type="text/javascript">
-        window.dispatchEvent(window.gameData.events.loadedEvent);
-    </script>
 </html>
