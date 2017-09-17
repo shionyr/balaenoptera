@@ -1,4 +1,21 @@
+(function(){
+    /// INSERT HERE!!!!!!
 
+    var NAME = "NAME";
+    discussionTemplate.identifier = NAME;
+    discussionTemplate.name = "REALNAME";
+    discussionTemplate.status = {
+        isOffended: false,
+        isTired: false,
+        isUnlocked: false
+    };
+    discussionManager.discussions[NAME] = discussionTemplate;
+    gameManager.setEvent(gameManager.eventNames.nextDay, function(){
+        discussionManager.discussions[NAME].status.isOffended = false;
+        discussionManager.discussions[NAME].status.isTired = false;
+        discussionManager.discussions[NAME].status.isUnlocked = false;
+    });
+})();
 
 function getTestDiscussion(){
     var testDiscussion = {
