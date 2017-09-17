@@ -166,39 +166,45 @@ body {
     height: 100%;
     background-size: 100% 100%;
 }
+
+
+.gameScreen .popupUI .portrait[character="drator"] .picture {
+    background-image: url('./img/portrait/drator/neutral.png');
+}
+.gameScreen .popupUI .portrait[character="drator"][emotion='offended'] .picture {
+    background-image: url('./img/portrait/drator/offended.png');
+}
+
+
+.gameScreen .popupUI .portrait[character="ueni"] .picture {
+    background-image: url('./img/portrait/ueni/neutral.png');
+}
+.gameScreen .popupUI .portrait[character="ueni"][emotion='offended'] .picture {
+    background-image: url('./img/portrait/ueni/offended.png');
+}
+
+
+.gameScreen .popupUI .portrait[character="arev"] .picture {
+    background-image: url('./img/portrait/arev/neutral.png');
+}
+.gameScreen .popupUI .portrait[character="arev"][emotion='offended'] .picture {
+    background-image: url('./img/portrait/arev/offended.png');
+}
+
+
+.gameScreen .popupUI .portrait[character="enk"] .picture {
+    background-image: url('./img/portrait/enk/neutral.png');
+}
+.gameScreen .popupUI .portrait[character="enk"][emotion='offended'] .picture {
+    background-image: url('./img/portrait/enk/offended.png');
+}
+
+
 .gameScreen .popupUI .portrait[character="ebena"] .picture {
     background-image: url('./img/portrait/ebena/neutral.png');
 }
 .gameScreen .popupUI .portrait[character="ebena"][emotion='offended'] .picture {
     background-image: url('./img/portrait/ebena/offended.png');
-}
-
-.gameScreen .popupUI .portrait[character="TWO"] .picture {
-    background-image: url('./img/portrait/TWO/neutral.png');
-}
-.gameScreen .popupUI .portrait[character="TWO"][emotion='offended'] .picture {
-    background-image: url('./img/portrait/TWO/offended.png');
-}
-
-.gameScreen .popupUI .portrait[character="THREE"] .picture {
-    background-image: url('./img/portrait/THREE/neutral.png');
-}
-.gameScreen .popupUI .portrait[character="THREE"][emotion='offended'] .picture {
-    background-image: url('./img/portrait/THREE/offended.png');
-}
-
-.gameScreen .popupUI .portrait[character="FOUR"] .picture {
-    background-image: url('./img/portrait/FOUR/neutral.png');
-}
-.gameScreen .popupUI .portrait[character="FOUR"][emotion='offended'] .picture {
-    background-image: url('./img/portrait/FOUR/offended.png');
-}
-
-.gameScreen .popupUI .portrait[character="FIVE"] .picture {
-    background-image: url('./img/portrait/FIVE/neutral.png');
-}
-.gameScreen .popupUI .portrait[character="FIVE"][emotion='offended'] .picture {
-    background-image: url('./img/portrait/FIVE/offended.png');
 }
 
 
