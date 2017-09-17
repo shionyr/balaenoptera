@@ -172,7 +172,7 @@ discussionManager = {
             optionsText,
             optionsCBs,
             discussionManager.__currentSubject.identifier,
-            (discussionManager.__currentSubject.status.offend ? 'offended' : 'neutral')
+            (discussionManager.__currentSubject.status.isOffended ? 'offended' : 'neutral')
         );
         discussionManager.popup.show();
     },
