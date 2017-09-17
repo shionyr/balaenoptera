@@ -118,12 +118,34 @@
 };
 
 navigation = {
+    fps: 24,
+    walkSpeed: 200,
     objects: {},
+    centerOffset: 450,
+    playerCurrentPosition: 1000,
+    playerTargetPosition: 1000,
+    __pixelsToRemRatio: null,
+    pixelsToRem: function (pixels) {
+        return pixels * navigation.__pixelsToRemRatio;
+    },
+    remToPixels: function (rem) {
+        return rem / navigation.__pixelsToRemRatio;
+    },
     __targetDiscussion: null,
     initialize: function(){
+        var pixelHeight = document.getElementById('playArea').scrollHeight;
+        navigation.__pixelsToRemRatio = 480 / pixelHeight;
+        navigation.objects.hallway = $('.shipInterior.gameObject');
+        navigation.objects.player = $('#player');
         navigation.objects.cells = $('.gameScreen .playArea .shipInterior .jailcell');
+        navigation.objects.backWall = $('.gameObject.backWall');
+        navigation.objects.backWall.click(function(event){
+            if (discussionManager.__currentSubject == null) {
+                navigation.walkTo (event.offsetX);
+            }
+        });
         $('.gameObject.interactable.clickable').click(function(event){
-            // Get name
+            // Get name if discussion
             if (this.attributes['discussionname']) {
                 // Navigate
                 navigation.__targetDiscussion = this.attributes.discussionname.value;
@@ -132,12 +154,57 @@ navigation = {
                 (function(){
                     discussionManager.startDiscussion(discussionManager.discussions[navigation.__targetDiscussion]);
                 })();
-            } else if (this.attributes['worldtrigger']) {
+                navigation.walkTo(parseFloat($(this).css('left')) + event.offsetX);
+            }
+            // See if it's a world trigger
+            else if (this.attributes['worldtrigger']) {
                 if (this.attributes.worldtrigger.value == 'sleep') {
                     gameManager.sleepManager.doSleep();
                 }
             }
         });
+        navigation.render();
+        window.setInterval(navigation.navigate,1000/navigation.fps);
+    },
+
+    walkTo: function (leftVal) {
+        //console.log(leftVal, navigation.pixelsToRem(leftVal));
+        gameManager.sounds.walk.stop();
+        gameManager.sounds.walk.volume(0.7);
+        gameManager.sounds.walk.play();
+        navigation.playerTargetPosition = navigation.pixelsToRem(leftVal);
+    },
+
+    navigate: function () {
+        //if (discussionManager.__currentSubject != null)
+            //return;
+        // See if I need to move
+        if (navigation.playerTargetPosition != navigation.playerCurrentPosition) {
+            navigation.walk (navigation.playerTargetPosition - navigation.playerCurrentPosition);
+        }
+        navigation.render();
+    },
+
+    walk: function (difference) {
+        if (Math.abs(difference) < Math.abs(navigation.walkSpeed / navigation.fps)) {
+            navigation.playerCurrentPosition += difference;
+            gameManager.sounds.walk.fade(1,0,0.2);
+            return;
+        }
+        if (difference < 0) {
+            navigation.playerCurrentPosition -= navigation.walkSpeed / navigation.fps;
+            navigation.objects.player.removeClass('walkRight');
+        } else if (difference > 0) {
+            navigation.playerCurrentPosition += navigation.walkSpeed / navigation.fps;
+            navigation.objects.player.addClass('walkRight');
+        }
+    },
+
+    render: function() {
+        var playerValue = navigation.playerCurrentPosition + 'rem',
+            hallwayValue = ((-navigation.playerCurrentPosition + navigation.centerOffset) - 1) + 'rem';
+        navigation.objects.player.css('left', playerValue);
+        navigation.objects.hallway.css('left', hallwayValue);
     }
 };
 gameManager.setEvent(gameManager.eventNames.gameLoaded, function() {

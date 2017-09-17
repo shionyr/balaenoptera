@@ -1,6 +1,8 @@
 (function(){
     //Ebena Conversation
     var discussionTemplate = {
+        identifier: 'ebena',
+        name: 'Ebena',
         status: {
             isOffended: false,
             isTired: false,

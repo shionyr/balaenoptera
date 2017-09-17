@@ -170,7 +170,9 @@ discussionManager = {
         discussionManager.popup.render(
             message,
             optionsText,
-            optionsCBs
+            optionsCBs,
+            discussionManager.__currentSubject.identifier,
+            (discussionManager.__currentSubject.status.offend ? 'offended' : 'neutral')
         );
         discussionManager.popup.show();
     },
@@ -184,6 +186,7 @@ discussionManager = {
         __checkInit: function() {
             if (discussionManager.popup.__element === null) {
                 discussionManager.popup.__element = $('.gameObject.popupUI');
+                discussionManager.popup.__picture = $('.gameObject.portrait');
                 discussionManager.popup.__textBoxElement = $('.gameObject.popupUI .statement');
                 discussionManager.popup.__buttons.push($('.gameObject.responseChoice.clickable.first'));
                 discussionManager.popup.__buttons.push($('.gameObject.responseChoice.clickable.second'));
@@ -207,10 +210,11 @@ discussionManager = {
         },
        __clickCB: function(index) {
            if (!!discussionManager.__buttonClickCBs[index]) {
+               gameManager.sounds.beep.play();
                discussionManager.__buttonClickCBs[index]();
            }
        },
-       render: function (message, optionsText, callbacks) {
+       render: function (message, optionsText, callbacks, identifier, emotion) {
            discussionManager.popup.__textBoxElement.text (message);
            for (var i = 0; i < 4; i++) {
                if (optionsText[i]) {
@@ -223,6 +227,8 @@ discussionManager = {
                }
            }
            discussionManager.__buttonClickCBs = callbacks;
+           discussionManager.popup.__picture.attr('character',identifier);
+           discussionManager.popup.__picture.attr('emotion',emotion);
        },
        show: function() {
             discussionManager.popup.__checkInit();

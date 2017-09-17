@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="font-size:.2vh;">
+<html style="font-size:.15vh;">
 	<head>
 		<title>Hello world!</title>
         <style type="text/css">
@@ -23,6 +23,7 @@
             .gameObject {
                 display: block;
                 position: absolute;
+                background-size: 100% 100%;
             }
             .awaitLoad {
                 opacity: 0;
@@ -74,6 +75,18 @@
                 loop: true,
                 volume: 0
             });
+            gameManager.sounds.walk = new Howl({
+                src:'./audio/2steps.mp3',
+                autoplay: false,
+                loop: true,
+                volume: 0.7
+            });
+            gameManager.sounds.beep = new Howl({
+                src:'./audio/boop.mp3',
+                autoplay: false,
+                loop: false,
+                volume: 0.2
+            })
         </script>
         <script id="script_jquery" type="text/javascript" src="./lib/jquery-3.2.1.min.js"> </script>
         <!-- Discussions -->
@@ -85,7 +98,6 @@
         <script type="text/javascript">
             gameManager.preLoader.addSemaphore('script_load',true);
             document.getElementById('script_load').addEventListener('onload',function(){
-                console.log ('poop');
                 gameManager.preLoader.removeSemaphore('script_load');
             });
 
@@ -101,7 +113,7 @@
 	<body>
         <div class="gameScreen gameObject">
             <!-- playArea is the width of the screen, and contains all gameObjects. -->
-            <div class="playArea gameObject">
+            <div class="playArea gameObject" id="playArea">
                 <!-- shipInterior is as wide as the ship, and scrolls back and forth -->
                 <div class="shipInterior gameObject">
                     <div class="gameObject backWall">
@@ -132,17 +144,9 @@
                     <!-- OBJECTS -->
                     <div class="gameObject interactable clickable bunk bed" worldtrigger="sleep">
                     </div>
-                    <!--
-                    <div class="gameObject interactable clickable bunk vault">
-                    </div>
-                    <div class="gameObject interactable clickable bunk coffee">
-                    </div>
-                    <div class="gameObject interactable clickable bunk transmitter">
-                    </div>
-                    -->
 
                     <!-- PLAYER -->
-                    <div class="gameObject player">
+                    <div class="gameObject player sprite" id="player">
                     </div>
 
                 </div>
@@ -153,7 +157,7 @@
             -->
             <div class="gameObject popupUI hidden">
                 <div class="gameObject popupWindow">
-                    <div class="gameObject portrait hugh neutral">
+                    <div class="gameObject portrait ebena" character="ebena" emotion="neutral">
                         <div class="gameObject picture"> </div>
                         <div class="gameObject eminata"> </div>
                     </div>
@@ -191,7 +195,6 @@
                 var element = document.getElementsByClassName('loadingScreen')[0];
                 element.className += " done";
                 element.addEventListener('animationend', function(e,f){
-                    console.log('foobar:',e);
                     e.target.className += " displayNone";
                 }, false);
             });
