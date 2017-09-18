@@ -165,8 +165,8 @@ body {
 .gameScreen .popupUI .portrait {
     width: 128rem;
     height: 128rem;
-    bottom: 121rem;
-    left: 22rem;
+    bottom: 137rem;
+    left: 83rem;
 }
 
 .gameScreen .popupUI .portrait .picture {
@@ -226,18 +226,18 @@ body {
 
 .gameScreen .popupUI .conversationWindow {
     background: rgba(0, 0, 86, 0.5);;
-    width: 855rem;
-    height: 170rem;
-    top: -2rem;
-    left: 115rem;
+    width: 568rem;
+    height: 131rem;
+    top: 8rem;
+    left: 210rem;
     border-radius: 10rem;
 }
 
 .gameScreen .popupUI .conversationWindow .statement {
-    top: -6rem;
-    left: 13rem;
-    width: 511rem;
-    height: 40rem;
+    top: 8rem;
+    left: 16rem;
+    width: 526rem;
+    height: 41rem;
     display: block;
     background: rgb(1, 93, 93);
     padding: 5rem;
@@ -251,10 +251,10 @@ body {
 }
 
 .gameScreen .popupUI .conversationWindow .responses {
-    bottom: 1rem;
-    left: 35rem;
-    width: 527rem;
-    height: 52rem;
+    bottom: 8rem;
+    left: 16rem;
+    width: 533rem;
+    height: 55rem;
     background: #002a69;
     padding: 1.5rem;
     border-radius: 7rem;
@@ -266,23 +266,22 @@ body {
 }
 
 .gameScreen .popupUI .conversationWindow .responses .responseChoice {
-    width: 237rem;
-    height: 15rem;
+    width: 258rem;
+    height: 22rem;
     border: 1px solid #FFFFFF;
     border-radius: 3rem;
     padding: 0.6rem 0 0 1rem;
-    font-size: .9em;
+    font-size: 1.1em;
     display: none;
 }
 .gameScreen .popupUI .conversationWindow .responses .responseChoice.visible {
     display: block;
 }
 .gameScreen .popupUI .conversationWindow .responses .responseChoice.bottom {
-    top:31rem;
-    margin-left: 1rem;
+    top:30rem;
 }
 .gameScreen .popupUI .conversationWindow .responses .responseChoice.right {
-    left: 278rem;
+    left: 271rem;
 }
 /* END popup UI */
 
