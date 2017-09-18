@@ -1,9 +1,18 @@
 ﻿@font-face {
-    font-family: 'Subway Ticker';
+    font-family: 'Subway TickerOld';
     src: url('./fonts/SubwayTicker.eot');
     src: url('./fonts/SubwayTicker.eot?#iefix') format('embedded-opentype'),
     url('./fonts/SubwayTicker.woff') format('woff'),
     url('./fonts/SubwayTicker.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Subway Ticker';
+    src: url('./fonts/8bitoperatorRegular.eot');
+    src: url('./fonts/8bitoperatorRegular.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/8bitoperatorRegular.woff') format('woff'),
+    url('./fonts/8bitoperatorRegular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
