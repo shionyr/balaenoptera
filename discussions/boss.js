@@ -3,7 +3,7 @@
     //Boss messages
     var discussionTemplate = {
         identifier: 'boss',
-        name: "Boss",
+        name: "Message from: BOSS",
         default: {
             textBox: ["Message from boss"],
             choices: {
