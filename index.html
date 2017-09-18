@@ -12,6 +12,8 @@
                 display: block;
                 position: fixed;
                 font-size: 5%;
+                image-rendering: -moz-crisp-edges;
+                image-rendering: pixelated;
             }
             .gameScreen {
                 background: #222222;
@@ -43,7 +45,18 @@
             .loadingScreen {
                 width: 100%;
                 height: 100%;
-                background: #003747;
+                background: #000;
+                cursor: pointer;
+            }
+            .loadingScreen .title {
+                width: 640px;
+                height: 640px;
+                background-image: url('./img/title_large.png');
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin: -320px;
+                background-size: 100%;
             }
             .loadingScreen .spinner {
                 animation-name: rotate;
@@ -226,20 +239,25 @@
             </div>
         </div>
         <div class="gameObject loadingScreen">
+            <!--
             <div class="gameObject spinner">
                 Loading...
             </div>
+            -->
+            <div class="title"></div>
         </div>
         <div class="gameObject flasher">
         </div>
         <script type="text/javascript">
             // Fade out preLoader, and initialize everything else
             gameManager.setEvent(gameManager.eventNames.loadingScreenComplete, function() {
-                var element = document.getElementsByClassName('loadingScreen')[0];
-                element.className += " done";
-                element.addEventListener('animationend', function(e,f){
-                    e.target.className += " displayNone";
-                }, false);
+                $(".loadingScreen").click(function(){
+                    var element = document.getElementsByClassName('loadingScreen')[0];
+                    element.className += " done";
+                    element.addEventListener('animationend', function(e,f){
+                        e.target.className += " displayNone";
+                    }, false);
+                });
             });
 
             // Fade in sound
