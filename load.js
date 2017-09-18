@@ -53,8 +53,10 @@
             if (document.readyState === 'complete') {
                 //if (!gameManager.preLoader.__checkSemaphore()) return;
                 window.clearInterval(window.gameManager.preLoader.__interval);
-                window.gameManager.fireEvent(window.gameManager.eventNames.loadingScreenComplete);
-                window.gameManager.fireEvent(window.gameManager.eventNames.gameLoaded);
+                window.setTimeout(function(){
+                    window.gameManager.fireEvent(window.gameManager.eventNames.loadingScreenComplete);
+                    window.gameManager.fireEvent(window.gameManager.eventNames.gameLoaded);
+                },750);
             }
         },
         initialize: function () {
@@ -98,10 +100,21 @@
     sleepManager: {
         currentDay: 1,
         maxDays: 5,
+        flasher: null,
+        __initFlasher: function () {
+            if (!gameManager.sleepManager.flasher) {
+                gameManager.sleepManager.flasher = $(".gameObject.flasher");
+            }
+        },
         doSleep: function() {
+            gameManager.sleepManager.__initFlasher();
             // fade out stuff
-            gameManager.sleepManager.__nextDay();
-            // fade stuff in
+            gameManager.sleepManager.flasher.fadeIn(400,function(){
+                gameManager.sleepManager.__nextDay();
+                gameManager.sleepManager.flasher.fadeOut(400,function(){
+                    gameManager.boss.doMessage();
+                });
+            });
         },
         __nextDay: function() {
             gameManager.fireEvent(gameManager.eventNames.nextDay);
@@ -109,9 +122,18 @@
             if (gameManager.sleepManager.currentDay > gameManager.sleepManager.maxDays) {
                 gameManager.sleepManager.currentDay = gameManager.sleepManager.maxDays;
             }
+        },
+        __start: function() {
+            //gameManager.boss.doMessage();
         }
     },
 
+    // BOSS
+    boss: {
+        doMessage: function () {
+            discussionManager.startDiscussion(discussionManager.discussions['boss']);
+        }
+    },
 
     // FLAGS
     globalFlags: []
@@ -119,7 +141,7 @@
 
 navigation = {
     fps: 24,
-    walkSpeed: 2000,
+    walkSpeed: 400,
     objects: {},
     centerOffset: 450,
     playerCurrentPosition: 1000,
@@ -149,11 +171,7 @@ navigation = {
             if (this.attributes['discussionname']) {
                 // Navigate
                 navigation.__targetDiscussion = this.attributes.discussionname.value;
-                // Set trigger to get there
-                // Just call this function for now
-                (function(){
-                    discussionManager.startDiscussion(discussionManager.discussions[navigation.__targetDiscussion]);
-                })();
+                discussionManager.startDiscussion(discussionManager.discussions[navigation.__targetDiscussion]);
                 navigation.walkTo(parseFloat($(this).css('left')) + event.offsetX);
             }
             // See if it's a world trigger
@@ -173,6 +191,7 @@ navigation = {
         gameManager.sounds.walk.volume(0.7);
         gameManager.sounds.walk.play();
         navigation.playerTargetPosition = navigation.pixelsToRem(leftVal);
+        navigation.objects.player.addClass('walking');
     },
 
     navigate: function () {
@@ -189,6 +208,7 @@ navigation = {
         if (Math.abs(difference) < Math.abs(navigation.walkSpeed / navigation.fps)) {
             navigation.playerCurrentPosition += difference;
             gameManager.sounds.walk.fade(1,0,0.2);
+            navigation.objects.player.removeClass('walking')
             return;
         }
         if (difference < 0) {

@@ -95,11 +95,10 @@ body {
 .gameScreen .playArea .shipInterior .interactable {
     height: 34rem;
     width: 30rem;
-    outline: 1px dotted white;
+    outline: 1px dotted rgba(255,255,255,0.2);
     bottom: 128rem;
 }
 .gameScreen .playArea .shipInterior .jailcell {
-    outline: 1px dotted red;
     bottom: 153em;
     width: 142em;
     height: 166em;
@@ -120,12 +119,38 @@ body {
     left: 3387rem;
 }
 
+.gameScreen .playArea .shipInterior .wantedposter {
+    bottom: 212em;
+    width: 22em;
+    height: 36em;
+    outline: 1px dotted red;
+}
+.gameScreen .playArea .shipInterior .wantedposter.first {
+    left: 1482rem;
+}
+.gameScreen .playArea .shipInterior .wantedposter.second {
+    left: 1935rem;
+}
+.gameScreen .playArea .shipInterior .wantedposter.third {
+    left: 2387rem;
+}
+.gameScreen .playArea .shipInterior .wantedposter.fourth {
+    left: 2846rem;
+}
+.gameScreen .playArea .shipInterior .wantedposter.fifth {
+    left: 3307rem;
+}
+
+
+
 .gameScreen .playArea .shipInterior .bunk {
     outline: 1px dotted white;
     height: 141rem;
 }
 .gameScreen .playArea .shipInterior .bunk.bed{
-    left: 792rem;
+    left: 752rem;
+    font-size: 21rem;
+    color: rgba(255,255,255,0.5);
 }
 .gameScreen .playArea .shipInterior .office-front {
     height: 383rem;
@@ -141,6 +166,19 @@ body {
     background-image:url('./img/sprites/player/player_idle.png');
     bottom: 128rem;
     left: 500rem;
+}
+@keyframes player-walking {
+    0% { background-image: url('./img/sprites/player/player_walk_1.png'); }
+    25% { background-image: url('./img/sprites/player/player_walk_2.png'); }
+    50% { background-image: url('./img/sprites/player/player_walk_3.png'); }
+    75% { background-image: url('./img/sprites/player/player_walk_4.png'); }
+}
+#player.walking {
+    animation-name: player-walking;
+    animation-duration: 1s;
+    animation-play-state:running;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 #player.walkRight {
     -moz-transform: scaleX(-1);
@@ -158,7 +196,7 @@ body {
 .gameScreen .popupUI {
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.2);
+    background: rgba(8, 10, 48, 0.59);
 }
 
 .gameScreen .popupUI.hidden {
@@ -242,6 +280,22 @@ body {
     border-radius: 10rem;
 }
 
+.gameScreen .popupUI .conversationWindow .name {
+    top: -21rem;
+    left: 16rem;
+    width: 194rem;
+    height: 41rem;
+    display: block;
+    background: rgb(0, 56, 56);
+    padding: 5rem 27rem;
+    border-radius: 6rem;
+    box-shadow: .4rem .6rem .6rem rgba(0,0,0,0.3);
+    font-size: 14rem;
+    line-height: 13rem;
+    color: #A6FFFB;
+    text-shadow: 0 0 .2em #65E1DC;
+}
+
 .gameScreen .popupUI .conversationWindow .statement {
     top: 8rem;
     left: 16rem;
@@ -254,7 +308,7 @@ body {
     border-top-left-radius: 0;
     box-shadow: .4rem .6rem .6rem rgba(0,0,0,0.3);
     font-size: 13rem;
-    line-height: 13rem;
+    line-height: 16rem;
     color: #FFFFFF;
     text-shadow: 0 0 .2em rgba(255,255,255,1);
 }
@@ -307,3 +361,4 @@ body {
     background-image: url('./img/portrait/hugh/neutral-2.png');
 }
 /* END portraits */
+

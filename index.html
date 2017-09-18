@@ -2,6 +2,7 @@
 <html style="font-size:.15vh;">
 	<head>
 		<title>Hello world!</title>
+        <meta charset="UTF-8">
         <style type="text/css">
             /* BEGIN Set these before anything else to show a flat black screen */
             body {
@@ -42,7 +43,7 @@
             .loadingScreen {
                 width: 100%;
                 height: 100%;
-                background: #269abc;
+                background: #003747;
             }
             .loadingScreen .spinner {
                 animation-name: rotate;
@@ -55,7 +56,7 @@
                 top: 50%;
                 margin-left: -2em;
                 margin-top: -.5em;
-                font-size: 4rem;
+                font-size: 44rem;
             }
             .loadingScreen.done {
                 animation-name: fadeout;
@@ -65,6 +66,15 @@
                 animation-fill-mode: forwards;
             }
             /* END Loading screen */
+
+            /* FLASHER */
+            .gameObject.flasher {
+                width: 100%;
+                height: 100%;
+                background: #FFFFFF;
+                opacity: 1;
+                display: none;
+            }
         </style>
         <script id="script_load" type="text/javascript" src="./load.js"> </script>
         <script id="script_howler" type="text/javascript" src="./lib/howler.js-master/dist/howler.min.js"> </script>
@@ -98,6 +108,10 @@
         <script id="script_discussion_arev" type="text/javascript" src="./discussions/arev.js"></script>
         <script id="script_discussion_enk" type="text/javascript" src="./discussions/enk.js"></script>
         <script id="script_discussion_ebena" type="text/javascript" src="./discussions/ebena.js"></script>
+
+        <script type="text/javascript" src="./discussions/wantedEbena.js"></script>
+        <script type="text/javascript" src="./discussions/wantedEnk.js"></script>
+        <script type="text/javascript" src="./discussions/wantedUeni.js"></script>
 
         <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="style.css" />
@@ -137,6 +151,19 @@
                     <div class="gameObject interactable clickable jailcell fifth ebena" discussionname="ebena">
                     </div>
 
+                    <!-- WANTED POSTERS -->
+                    <div class="gameObject interactable clickable wantedposter first drator" discussionname="wantedDrator">
+                    </div>
+                    <div class="gameObject interactable clickable wantedposter second ueni" discussionname="wantedUeni">
+                    </div>
+                    <div class="gameObject interactable clickable wantedposter third arev" discussionname="wantedArev">
+                    </div>
+                    <div class="gameObject interactable clickable wantedposter fourth enk" discussionname="wantedEnk">
+                    </div>
+                    <div class="gameObject interactable clickable wantedposter fifth ebena" discussionname="wantedEbena">
+                    </div>
+
+
                     <!-- LOCKERS -->
                     <div class="gameObject interactable clickable locker communicator">
                     </div>
@@ -149,6 +176,7 @@
 
                     <!-- OBJECTS -->
                     <div class="gameObject interactable clickable bunk bed" worldtrigger="sleep">
+                        (Click to sleep)
                     </div>
 
                     <!-- PLAYER -->
@@ -167,6 +195,8 @@
             <div class="gameObject popupUI hidden">
                 <div class="gameObject popupWindow">
                     <div class="gameObject conversationWindow">
+                        <div class="gameObject name">
+                        </div>
                         <div class="gameObject statement">
                             Seriously I hate you so much!  How can you possibly think that this is OK!  What the EEFFFFFF!!!!! OMGOMGOMG!
                             Why do I even tolerate your assholery!
@@ -198,6 +228,8 @@
                 Loading...
             </div>
         </div>
+        <div class="gameObject flasher">
+        </div>
         <script type="text/javascript">
             // Fade out preLoader, and initialize everything else
             gameManager.setEvent(gameManager.eventNames.loadingScreenComplete, function() {
@@ -217,7 +249,11 @@
             // Prepare navigables
             gameManager.setEvent(gameManager.eventNames.gameLoaded, function() {
                 $('.gameObject.interactable').click(function(e,f){
+                });
 
+                window.setTimeout(function(){
+                    gameManager.sleepManager.__start();
+                    gameManager.boss.doMessage();
                 });
             });
         </script>
