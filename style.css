@@ -95,7 +95,7 @@ body {
 .gameScreen .playArea .shipInterior .interactable {
     height: 34rem;
     width: 30rem;
-    outline: 1px dotted white;
+    outline: 1px dotted rgba(255,255,255,0.2);
     bottom: 128rem;
 }
 .gameScreen .playArea .shipInterior .jailcell {
@@ -119,12 +119,38 @@ body {
     left: 3387rem;
 }
 
+.gameScreen .playArea .shipInterior .wantedposter {
+    bottom: 212em;
+    width: 22em;
+    height: 36em;
+    outline: 1px dotted red;
+}
+.gameScreen .playArea .shipInterior .wantedposter.first {
+    left: 1482rem;
+}
+.gameScreen .playArea .shipInterior .wantedposter.second {
+    left: 1935rem;
+}
+.gameScreen .playArea .shipInterior .wantedposter.third {
+    left: 2387rem;
+}
+.gameScreen .playArea .shipInterior .wantedposter.fourth {
+    left: 2846rem;
+}
+.gameScreen .playArea .shipInterior .wantedposter.fifth {
+    left: 3307rem;
+}
+
+
+
 .gameScreen .playArea .shipInterior .bunk {
     outline: 1px dotted white;
     height: 141rem;
 }
 .gameScreen .playArea .shipInterior .bunk.bed{
-    left: 792rem;
+    left: 752rem;
+    font-size: 21rem;
+    color: rgba(255,255,255,0.5);
 }
 .gameScreen .playArea .shipInterior .office-front {
     height: 383rem;
@@ -253,8 +279,8 @@ body {
     box-shadow: .4rem .6rem .6rem rgba(0,0,0,0.3);
     font-size: 14rem;
     line-height: 13rem;
-    color: #65E1DC;
-    text-shadow: 0 0 .2em rgba(255,255,255,1);
+    color: #A6FFFB;
+    text-shadow: 0 0 .2em #65E1DC;
 }
 
 .gameScreen .popupUI .conversationWindow .statement {
@@ -269,7 +295,7 @@ body {
     border-top-left-radius: 0;
     box-shadow: .4rem .6rem .6rem rgba(0,0,0,0.3);
     font-size: 13rem;
-    line-height: 13rem;
+    line-height: 16rem;
     color: #FFFFFF;
     text-shadow: 0 0 .2em rgba(255,255,255,1);
 }

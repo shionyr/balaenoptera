@@ -53,8 +53,10 @@
             if (document.readyState === 'complete') {
                 //if (!gameManager.preLoader.__checkSemaphore()) return;
                 window.clearInterval(window.gameManager.preLoader.__interval);
-                window.gameManager.fireEvent(window.gameManager.eventNames.loadingScreenComplete);
-                window.gameManager.fireEvent(window.gameManager.eventNames.gameLoaded);
+                window.setTimeout(function(){
+                    window.gameManager.fireEvent(window.gameManager.eventNames.loadingScreenComplete);
+                    window.gameManager.fireEvent(window.gameManager.eventNames.gameLoaded);
+                },750);
             }
         },
         initialize: function () {

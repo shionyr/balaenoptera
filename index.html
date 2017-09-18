@@ -2,6 +2,7 @@
 <html style="font-size:.15vh;">
 	<head>
 		<title>Hello world!</title>
+        <meta charset="UTF-8">
         <style type="text/css">
             /* BEGIN Set these before anything else to show a flat black screen */
             body {
@@ -42,7 +43,7 @@
             .loadingScreen {
                 width: 100%;
                 height: 100%;
-                background: #269abc;
+                background: #003747;
             }
             .loadingScreen .spinner {
                 animation-name: rotate;
@@ -55,7 +56,7 @@
                 top: 50%;
                 margin-left: -2em;
                 margin-top: -.5em;
-                font-size: 4rem;
+                font-size: 44rem;
             }
             .loadingScreen.done {
                 animation-name: fadeout;
@@ -146,6 +147,19 @@
                     <div class="gameObject interactable clickable jailcell fifth ebena" discussionname="ebena">
                     </div>
 
+                    <!-- WANTED POSTERS -->
+                    <div class="gameObject interactable clickable wantedposter first drator" discussionname="wantedDrator">
+                    </div>
+                    <div class="gameObject interactable clickable wantedposter second ueni" discussionname="wantedUeni">
+                    </div>
+                    <div class="gameObject interactable clickable wantedposter third arev" discussionname="wantedArev">
+                    </div>
+                    <div class="gameObject interactable clickable wantedposter fourth enk" discussionname="wantedEnk">
+                    </div>
+                    <div class="gameObject interactable clickable wantedposter fifth ebena" discussionname="wantedEbena">
+                    </div>
+
+
                     <!-- LOCKERS -->
                     <div class="gameObject interactable clickable locker communicator">
                     </div>
@@ -158,6 +172,7 @@
 
                     <!-- OBJECTS -->
                     <div class="gameObject interactable clickable bunk bed" worldtrigger="sleep">
+                        (Click to sleep)
                     </div>
 
                     <!-- PLAYER -->
