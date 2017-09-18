@@ -119,7 +119,7 @@
 
 navigation = {
     fps: 24,
-    walkSpeed: 200,
+    walkSpeed: 2000,
     objects: {},
     centerOffset: 450,
     playerCurrentPosition: 1000,

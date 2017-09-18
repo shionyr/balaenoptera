@@ -20,49 +20,47 @@
                 exit: "Alright"
             }
         },
+        // DAY ONE
         1: {
-            // DAY ONE
-            1: {
-                // Basic / first discussion
-                basic: {
-                    // General things they say when you exit a discussion
-                    reactions: {
-                        offend: "Fine! Then leave me alone, va",
-                        exit: "Okay then"
-                    },
-                    steps:[
-                        {
-                            // First statement
-                            textBox: ["Hey, can I ask you something, va?"],
-                            choices: {
-                                next: "Ask what they want",
-                                unlock: false,
-                                offend: false,
-                                exit: "Tell them you can’t talk right now"
-                            }
-                        },
-                        {
-                            // Second statement
-                            textBox: ["It is rather cold in here. Can you bring me my jacket, va?"],
-                            choices: {
-                                next: "Ask why they need it",
-                                unlock: false,
-                                offend: "Refuse",
-                                exit: "Tell them you’re sorry, but you can’t"
-                            }
-                        },
-                        {
-                            //Third statement
-                            textBox: ["I just need my jacket. I don’t think you understand, va."],
-                            choices: {
-                                next: false,
-                                unlock: false,
-                                offend: "Refuse",
-                                exit: "Tell them you’re sorry, but you can’t"
-                            }
+            // Basic / first discussion
+            basic: {
+                // General things they say when you exit a discussion
+                reactions: {
+                    offend: "Fine! Then leave me alone, va",
+                    exit: "Okay then"
+                },
+                steps:[
+                    {
+                        // First statement
+                        textBox: ["Hey, can I ask you something, va?"],
+                        choices: {
+                            next: "Ask what they want",
+                            unlock: false,
+                            offend: false,
+                            exit: "Tell them you can’t talk right now"
                         }
-                    ]
-                }
+                    },
+                    {
+                        // Second statement
+                        textBox: ["It is rather cold in here. Can you bring me my jacket, va?"],
+                        choices: {
+                            next: "Ask why they need it",
+                            unlock: false,
+                            offend: "Refuse",
+                            exit: "Tell them you’re sorry, but you can’t"
+                        }
+                    },
+                    {
+                        //Third statement
+                        textBox: ["I just need my jacket. I don’t think you understand, va."],
+                        choices: {
+                            next: false,
+                            unlock: false,
+                            offend: "Refuse",
+                            exit: "Tell them you’re sorry, but you can’t"
+                        }
+                    }
+                ]
             }
         },
 
@@ -134,9 +132,6 @@
                 ]
             }
         },
-
-
-
 
         // FOURTH DAY
         4: {

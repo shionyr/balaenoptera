@@ -146,6 +146,9 @@ discussionManager = {
             if (discussionManager.__currentSubject.status.isUnlocked) {
                 discussionManager.__currentSubject.status.isTired = true;
             }
+            else if (!discussionManager.__currentSubject[gameManager.sleepManager.currentDay]['unlocked']) {
+                discussionManager.__currentSubject.status.isTired = true;
+            }
             // set exit flag so it'll close
             discussionManager.__exitFlag = true;
             // iterate

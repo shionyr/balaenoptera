@@ -113,9 +113,17 @@ body {
 
 .gameScreen .playArea .shipInterior .bunk {
     outline: 1px dotted white;
+    height: 141rem;
 }
-.gameScreen .playArea .shipInterior .bunk .bed{
-    left: 210rem;
+.gameScreen .playArea .shipInterior .bunk.bed{
+    left: 792rem;
+}
+.gameScreen .playArea .shipInterior .office-front {
+    height: 383rem;
+    width: 142rem;
+    background-image: url('./img/env/doorway_TOP.png');
+    left: 4170rem;
+    bottom: 74rem;
 }
 
 #player {

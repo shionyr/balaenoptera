@@ -28,8 +28,8 @@
             basic: {
                 // General things they say when you exit a discussion
                 reactions: {
-                    offend: "Fine! Then leave me alone, va",
-                    exit: "O-oh! Okay, I am s-sorry!"
+                    offend: "Oh, I am... so very scared!",
+                    exit: "O-oh! Okay.!"
                 },
                 steps:[
                     {
@@ -46,14 +46,26 @@
                         // Second statement
                         textBox: ["Oh! I do not want to go into a jail! We are not crime-doers!"],
                         choices: {
+                            next: "Tell them to explain",
+                            unlock: false,
+                            offend: "Tell them it isn't up to you",
+                            exit: false
+                        }
+                    },
+                    {
+                        // Second statement
+                        textBox: ["The Commissioners are the crime-doers! Please do not let us be given up to them!"],
+                        choices: {
                             next: false,
-                            unlock: "Tell them to explain",
-                            offend: false,
-                            exit: "Tell them it isn't up to you"
+                            unlock: false,
+                            offend: "Tell them it isn't up to you",
+                            exit: "Tell them you'll see what you can do"
                         }
                     }
+
                 ]
             }
+
         },
 
         // DAY TWO
