@@ -56,7 +56,7 @@
                 window.setTimeout(function(){
                     window.gameManager.fireEvent(window.gameManager.eventNames.loadingScreenComplete);
                     window.gameManager.fireEvent(window.gameManager.eventNames.gameLoaded);
-                },750);
+                },1);
             }
         },
         initialize: function () {

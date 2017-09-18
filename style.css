@@ -123,7 +123,7 @@ body {
     bottom: 212em;
     width: 22em;
     height: 36em;
-    outline: 1px dotted red;
+    outline: 1px dotted rgba(255,0,0,0.1);
 }
 .gameScreen .playArea .shipInterior .wantedposter.first {
     left: 1482rem;
