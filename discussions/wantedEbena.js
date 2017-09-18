@@ -498,7 +498,7 @@
             }
         }
     };
-    var NAME = "wantedUeni";
+    var NAME = "wantedEbena";
     discussionTemplate.status = {
         isOffended: false,
         isTired: false,

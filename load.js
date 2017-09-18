@@ -141,7 +141,7 @@
 
 navigation = {
     fps: 24,
-    walkSpeed: 2000,
+    walkSpeed: 400,
     objects: {},
     centerOffset: 450,
     playerCurrentPosition: 1000,
@@ -191,6 +191,7 @@ navigation = {
         gameManager.sounds.walk.volume(0.7);
         gameManager.sounds.walk.play();
         navigation.playerTargetPosition = navigation.pixelsToRem(leftVal);
+        navigation.objects.player.addClass('walking');
     },
 
     navigate: function () {
@@ -207,6 +208,7 @@ navigation = {
         if (Math.abs(difference) < Math.abs(navigation.walkSpeed / navigation.fps)) {
             navigation.playerCurrentPosition += difference;
             gameManager.sounds.walk.fade(1,0,0.2);
+            navigation.objects.player.removeClass('walking')
             return;
         }
         if (difference < 0) {

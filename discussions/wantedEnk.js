@@ -349,7 +349,7 @@
             }
         }
     };
-    var NAME = "wantedUeni";
+    var NAME = "wantedEnk";
     discussionTemplate.status = {
         isOffended: false,
         isTired: false,

@@ -167,6 +167,19 @@ body {
     bottom: 128rem;
     left: 500rem;
 }
+@keyframes player-walking {
+    0% { background-image: url('./img/sprites/player/player_walk_1.png'); }
+    25% { background-image: url('./img/sprites/player/player_walk_2.png'); }
+    50% { background-image: url('./img/sprites/player/player_walk_3.png'); }
+    75% { background-image: url('./img/sprites/player/player_walk_4.png'); }
+}
+#player.walking {
+    animation-name: player-walking;
+    animation-duration: 1s;
+    animation-play-state:running;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
 #player.walkRight {
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
