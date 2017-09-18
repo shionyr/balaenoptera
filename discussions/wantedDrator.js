@@ -1,11 +1,11 @@
 (function(){
     /// INSERT HERE!!!!!!
-    //Boss messages
+    //Ueni wanted poster
     var discussionTemplate = {
-        identifier: 'boss',
-        name: "Boss",
+        identifier: 'wantedDrator',
+        name: "Wanted: Draator",
         default: {
-            textBox: ["Message from boss"],
+            textBox: ["Wanted Poster"],
             choices: {
                 exit: "*read message*"
             }
@@ -29,12 +29,12 @@
                 // General things they say when you exit a discussion
                 reactions: {
                     offend: "*nod*",
-                    exit: "Message Ended"
+                    exit: "*finish reading*"
                 },
                 steps:[
                     {
                         // First statement
-                        textBox: ["Message from Boss: We’ve got five prisoners to pick up. Just a bunch of insurgents crooks transporting stolen goods. "],
+                        textBox: ["Name: Draator. Race: Human. Gender: Male."],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -44,7 +44,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["They’ll be in holding until the Intergalactic Justice Commission can pick them up. There’s a "],
+                        textBox: ["Trespassing, one count"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -54,7 +54,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["decent bounty on the five of them so don’t screw this up. Your job isn’t hard. Just make sure "],
+                        textBox: ["Parole Violation, two counts"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -64,7 +64,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["they don’t try anything funny before the IJC get here with the reward. If you can, try and see if "],
+                        textBox: ["Possession of deadly weapon, one count"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -74,7 +74,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["you can get the code for the cargo bins they were carrying. I’m sure the IJC would be more than"],
+                        textBox: ["Resisting Arrest, one count"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -84,7 +84,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["grateful to not have to deal with it themselves. They don’t know what’s in it either so, I’m sure "],
+                        textBox: ["Fleeing government (parole), one count"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -94,45 +94,14 @@
                     },
                     {
                         // First statement
-                        textBox: ["they wouldn’t notice if a thing or two got ‘lost’ in the transfer."],
+                        textBox: ["Suspected of fraud, conspiracy to commit crimes, distribution of illegal goods"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
                             offend: false,
                             exit: false
                         }
-                    },
-                    {
-                        // First statement
-                        textBox: ["Oh, and go ahead and rifle through their personal effects and see if there’s anything worth while. "],
-                        choices: {
-                            next: "*continue reading*",
-                            unlock: false,
-                            offend: false,
-                            exit: false
-                        }
-                    },
-                    {
-                        // First statement
-                        textBox: ["It’s all in the vault. Keep what you want and we’ll pawn the rest. It’s not like these folks need it "],
-                        choices: {
-                            next: "*continue reading*",
-                            unlock: false,
-                            offend: false,
-                            exit: false
-                        }
-                    },
-                    {
-                        // First statement
-                        textBox: ["where they're headed."],
-                        choices: {
-                            next: false,
-                            unlock: false,
-                            offend: false,
-                            exit: "*finish reading*"
-                        }
-                    }
-
+                    }				
                 ]
             }
         },
@@ -143,13 +112,13 @@
             basic: {
                 // General things they say when you exit a discussion
                 reactions: {
-                    offend: "*finish reading*",
-                    exit: "*put message down*"
+                    offend: "*nod*",
+                    exit: "*finish reading*"
                 },
                 steps:[
                     {
                         // First statement
-                        textBox: ["Message from Boss: Got word from the IJC. It’ll be about five parsecs before the nearest prisoner transfer ship can"],
+                        textBox: ["Name: Draator. Race: Human. Gender: Male."],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -159,7 +128,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["reach us. Didn’t think it’d take that long, but you know the government. Incompetent as ever."],
+                        textBox: ["Trespassing, one count"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -169,7 +138,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["But they aren’t all useless, I guess. One of the prisoners is an IJC informant. Obviously they’re"],
+                        textBox: ["Parole Violation, two counts"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -179,14 +148,44 @@
                     },
                     {
                         // First statement
-                        textBox: ["not going to blow their cover outright, but see if you can figure out who it is. "],
+                        textBox: ["Possession of deadly weapon, one count"],
                         choices: {
-                            next: false,
+                            next: "*continue reading*",
                             unlock: false,
                             offend: false,
-                            exit: "*finish reading*"
+                            exit: false
                         }
-                    }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Resisting Arrest, one count"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Fleeing government (parole), one count"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Suspected of fraud, conspiracy to commit crimes, distribution of illegal goods"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    }				
                 ]
             }
         },
@@ -198,13 +197,13 @@
             basic: {
                 // General things they say when you exit a discussion
                 reactions: {
-                    offend: "*finish reading*",
-                    exit: "*put message down*"
+                    offend: "*nod*",
+                    exit: "*finish reading*"
                 },
                 steps:[
                     {
                         // First statement
-                        textBox: ["Message from Boss: Got word from the IJC. We're their last pick-up before they dump their haul. They’ve only got 3"],
+                        textBox: ["Name: Draator. Race: Human. Gender: Male."],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -214,7 +213,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["spots left on their holding. We'll just fudge the paperwork a bit then once they get here. "],
+                        textBox: ["Trespassing, one count"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -224,7 +223,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["'Prisoner resisted during transfer,' and be done with it. Just make sure you check the reward "],
+                        textBox: ["Parole Violation, two counts"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -234,7 +233,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["difference for dead or alive. And see if you could use that to get the prisoners to talk about the"],
+                        textBox: ["Possession of deadly weapon, one count"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -244,14 +243,34 @@
                     },
                     {
                         // First statement
-                        textBox: ["vault. Check their belonging for anything you can use as leverage."],
+                        textBox: ["Resisting Arrest, one count"],
                         choices: {
-                            next: false,
+                            next: "*continue reading*",
                             unlock: false,
                             offend: false,
-                            exit: "*finish reading*"
+                            exit: false
                         }
-                    }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Fleeing government (parole), one count"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Suspected of fraud, conspiracy to commit crimes, distribution of illegal goods"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    }				
                 ]
             }
         },
@@ -262,13 +281,13 @@
             basic: {
                 // General things they say when you exit a discussion
                 reactions: {
-                    offend: "*finish reading*",
-                    exit: "*put message down*"
+                    offend: "*nod*",
+                    exit: "*finish reading*"
                 },
                 steps:[
                     {
                         // First statement
-                        textBox: ["Message from Boss: Picked up on a Insurgent distress signal. It’s coming from our ship One of the prisoners must be "],
+                        textBox: ["Name: Draator. Race: Human. Gender: Male."],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -278,7 +297,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["transmitting out location somehow. Next time you screw up like this, I’ll cut more than just your"],
+                        textBox: ["Trespassing, one count"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -288,14 +307,54 @@
                     },
                     {
                         // First statement
-                        textBox: ["pay. Find that transmitter before they find us. The IJC will be here soon, but we don't want to be found before that."],
+                        textBox: ["Parole Violation, two counts"],
                         choices: {
-                            next: false,
+                            next: "*continue reading*",
                             unlock: false,
                             offend: false,
-                            exit: "*finish reading*"
+                            exit: false
                         }
-                    }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Possession of deadly weapon, one count"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Resisting Arrest, one count"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Fleeing government (parole), one count"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Suspected of fraud, conspiracy to commit crimes, distribution of illegal goods"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    }				
                 ]
             }
         },
@@ -306,13 +365,13 @@
             basic: {
                 // General things they say when you exit a discussion
                 reactions: {
-                    offend: "*finish reading*",
-                    exit: "*put message down*"
+                    offend: "*nod*",
+                    exit: "*finish reading*"
                 },
                 steps:[
                     {
                         // First statement
-                        textBox: ["Message from Boss: Those insurgents found us. I told you to find the transmitter. I’d throw you out the airlock, but it "],
+                        textBox: ["Name: Draator. Race: Human. Gender: Male."],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -322,7 +381,7 @@
                     },
                     {
                         // First statement
-                        textBox: ["sounds like they’re wanting to keep things from getting messy. Maybe we can get a decent deal out of this."],
+                        textBox: ["Trespassing, one count"],
                         choices: {
                             next: "*continue reading*",
                             unlock: false,
@@ -332,19 +391,59 @@
                     },
                     {
                         // First statement
-                        textBox: ["They don’t seem to know exactly who or what we’ve got. Figure it out, but do it quick. IJC will be here soon"],
+                        textBox: ["Parole Violation, two counts"],
                         choices: {
-                            next: false,
+                            next: "*continue reading*",
                             unlock: false,
                             offend: false,
-                            exit: "*finish reading*"
+                            exit: false
                         }
-                    }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Possession of deadly weapon, one count"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Resisting Arrest, one count"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Fleeing government (parole), one count"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    },
+                    {
+                        // First statement
+                        textBox: ["Suspected of fraud, conspiracy to commit crimes, distribution of illegal goods"],
+                        choices: {
+                            next: "*continue reading*",
+                            unlock: false,
+                            offend: false,
+                            exit: false
+                        }
+                    }				
                 ]
             }
         }
     };
-    var NAME = "boss";
+    var NAME = "wantedDrator";
     discussionTemplate.status = {
         isOffended: false,
         isTired: false,
