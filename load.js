@@ -146,6 +146,8 @@ navigation = {
     centerOffset: 450,
     playerCurrentPosition: 1000,
     playerTargetPosition: 1000,
+    playerMinPositon: 795,
+    playerMaxPosition: 4382,
     __pixelsToRemRatio: null,
     pixelsToRem: function (pixels) {
         return pixels * navigation.__pixelsToRemRatio;
@@ -188,10 +190,16 @@ navigation = {
     walkTo: function (leftVal) {
         //console.log(leftVal, navigation.pixelsToRem(leftVal));
         gameManager.sounds.walk.stop();
-        gameManager.sounds.walk.volume(0.7);
-        gameManager.sounds.walk.play();
+        // Clamp x position
+        var oldTargetPosition = navigation.playerTargetPosition;
         navigation.playerTargetPosition = navigation.pixelsToRem(leftVal);
-        navigation.objects.player.addClass('walking');
+        if (navigation.playerTargetPosition < navigation.playerMinPositon || navigation.playerTargetPosition > navigation.playerMaxPosition) {
+            navigation.playerTargetPosition = oldTargetPosition;
+        } else {
+            gameManager.sounds.walk.volume(0.7);
+            gameManager.sounds.walk.play();
+            navigation.objects.player.addClass('walking');
+        }
     },
 
     navigate: function () {
